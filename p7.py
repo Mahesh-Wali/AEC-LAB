@@ -1,0 +1,22 @@
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+result=np.random.choice([1,2,3,4,5,6],size=10)
+ones=np.sum(result==1)
+print("appearance of one:",ones)
+print("Probability of getting 1:",ones/10)
+twos=np.sum(result==2)
+print("appearance of two:",twos)
+print("Probability of getting 2:",twos/10)
+threes=np.sum(result==3)
+print("appearance of three:",threes)
+print("Probability of getting:",threes/10)
+fours=np.sum(result==4)
+print("appearance of four:",fours)
+print("Probability of getting:",fours/10)
+fives=np.sum(result==5)
+print("appearance of five:",fives)
+print("Probability of getting:",fives/10)
+sixes=np.sum(result==6)
+print("appearance of six:",sixes)
+print("Probability of getting:",sixes/10)
