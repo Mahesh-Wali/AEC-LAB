@@ -6,3 +6,4 @@ print("Maximum : ",marks.max())
 print("Minimum : ",marks.min())
 print("Std Dev : ",marks.std())
 print("Variance : ",marks.var())
+
