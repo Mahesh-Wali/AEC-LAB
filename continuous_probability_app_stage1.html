@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Continuous Probability Distributions: Industry Applications</title>
+  <style>
+    :root {
+      --navy: #14243a; --blue: #2563eb; --sky: #eaf2ff; --ink: #1f2937;
+      --muted: #64748b; --line: #e2e8f0; --paper: #f7f9fc; --white: #fff;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: Inter, Segoe UI, Arial, sans-serif; color: var(--ink); background: var(--paper); }
+    header { background: var(--navy); color: white; padding: 28px 6vw 24px; }
+    header .eyebrow { color: #bfdbfe; font-size: .78rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+    header h1 { max-width: 900px; margin: 10px 0 8px; font-size: clamp(1.65rem, 4vw, 2.55rem); line-height: 1.15; }
+    header p { max-width: 760px; margin: 0; color: #dbeafe; line-height: 1.6; }
+    .shell { max-width: 1180px; margin: 28px auto; padding: 0 20px 48px; }
+    .intro { display: flex; align-items: flex-end; justify-content: space-between; gap: 18px; margin-bottom: 18px; }
+    .intro h2 { margin: 0 0 6px; font-size: 1.35rem; color: var(--navy); }
+    .intro p { margin: 0; color: var(--muted); line-height: 1.5; }
+    .status { white-space: nowrap; border: 1px solid #bfdbfe; background: var(--sky); color: #1d4ed8; border-radius: 999px; padding: 7px 12px; font-size: .78rem; font-weight: 700; }
+    .tabs { display: flex; gap: 8px; flex-wrap: wrap; border-bottom: 1px solid var(--line); padding-bottom: 12px; margin-bottom: 22px; }
+    .tab { border: 1px solid var(--line); background: white; color: #334155; border-radius: 10px; padding: 10px 14px; cursor: pointer; font-size: .92rem; font-weight: 650; }
+    .tab:hover { border-color: #93c5fd; background: #f8fbff; }
+    .tab[aria-selected="true"] { background: var(--blue); color: white; border-color: var(--blue); }
+    .panel { display: none; }
+    .panel.active { display: block; }
+    .hero-card { background: white; border: 1px solid var(--line); border-radius: 16px; padding: 24px; box-shadow: 0 8px 24px rgba(15, 23, 42, .04); }
+    .module-kicker { color: var(--blue); text-transform: uppercase; letter-spacing: .1em; font-size: .72rem; font-weight: 800; }
+    .hero-card h3 { color: var(--navy); font-size: 1.5rem; margin: 8px 0; }
+    .hero-card > p { color: var(--muted); line-height: 1.65; max-width: 820px; margin: 0; }
+    .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin-top: 20px; }
+    .section-card { background: white; border: 1px solid var(--line); border-radius: 14px; padding: 18px; min-height: 150px; }
+    .section-card h4 { margin: 0 0 10px; color: var(--navy); font-size: 1rem; }
+    .section-card p, .section-card li { color: var(--muted); line-height: 1.55; font-size: .92rem; }
+    .section-card p { margin: 0; }
+    .section-card ul { margin: 0; padding-left: 19px; }
+    .placeholder { border: 1px dashed #94a3b8; background: #f8fafc; color: #64748b; border-radius: 10px; padding: 18px; text-align: center; line-height: 1.5; }
+    .home-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-top: 22px; }
+    .module-tile { background: white; border: 1px solid var(--line); border-radius: 14px; padding: 18px; text-align: left; cursor: pointer; transition: transform .15s, box-shadow .15s; }
+    .module-tile:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(15, 23, 42, .07); }
+    .module-tile .number { display: inline-grid; place-items: center; width: 32px; height: 32px; border-radius: 9px; background: var(--sky); color: var(--blue); font-weight: 800; }
+    .module-tile h3 { margin: 14px 0 7px; color: var(--navy); font-size: 1.02rem; }
+    .module-tile p { margin: 0; color: var(--muted); font-size: .9rem; line-height: 1.5; }
+    .formula { font-family: Cambria, Georgia, serif; color: #1e40af; font-size: 1.12rem; background: #eff6ff; border-radius: 9px; padding: 12px; }
+    footer { text-align: center; color: #94a3b8; font-size: .82rem; padding: 10px 20px 28px; }
+    @media (max-width: 760px) {
+      .home-grid { grid-template-columns: 1fr; }
+      .grid { grid-template-columns: 1fr; }
+      .intro { align-items: flex-start; flex-direction: column; }
+      .tabs { display: grid; grid-template-columns: 1fr 1fr; }
+      .tab { text-align: left; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="eyebrow">Interactive AIML learning lab</div>
+    <h1>Continuous Probability Distributions: Industry Applications</h1>
+    <p>Explore how probability distributions help solve practical problems in manufacturing, cloud computing, and warehouse operations.</p>
+  </header>
+
+  <main class="shell">
+    <div class="intro">
+      <div>
+        <h2>Learning modules</h2>
+        <p>Select a module to explore its industry problem, mathematical model, and interactive workspace.</p>
+      </div>
+      <span class="status">Stage 1 · Layout ready</span>
+    </div>
+
+    <nav class="tabs" aria-label="Application navigation" role="tablist">
+      <button class="tab" role="tab" aria-selected="true" aria-controls="home" data-target="home">Home</button>
+      <button class="tab" role="tab" aria-selected="false" aria-controls="normal" data-target="normal">Normal Distribution</button>
+      <button class="tab" role="tab" aria-selected="false" aria-controls="exponential" data-target="exponential">Exponential Distribution</button>
+      <button class="tab" role="tab" aria-selected="false" aria-controls="clt" data-target="clt">Central Limit Theorem</button>
+    </nav>
+
+    <section id="home" class="panel active" role="tabpanel">
+      <div class="hero-card">
+        <div class="module-kicker">Welcome</div>
+        <h3>Probability in real industries</h3>
+        <p>Continuous probability distributions describe measurements and waiting times that can take many possible values. This application connects the theory to three beginner-friendly industry examples.</p>
+        <div class="home-grid">
+          <button class="module-tile" data-open="normal">
+            <span class="number">01</span>
+            <h3>Normal Distribution</h3>
+            <p>Manufacturing Quality Control · Check whether shaft diameters meet specifications.</p>
+          </button>
+          <button class="module-tile" data-open="exponential">
+            <span class="number">02</span>
+            <h3>Exponential Distribution</h3>
+            <p>Cloud Request Inter-arrival Time · Study the time between incoming requests.</p>
+          </button>
+          <button class="module-tile" data-open="clt">
+            <span class="number">03</span>
+            <h3>Central Limit Theorem</h3>
+            <p>Warehouse Processing Time · Understand sample averages of processing times.</p>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section id="normal" class="panel" role="tabpanel">
+      <div class="hero-card">
+        <div class="module-kicker">Module 01 · Manufacturing</div>
+        <h3>Normal Distribution — Manufacturing Quality Control</h3>
+        <p><strong>Industry problem:</strong> A factory manufactures metal shafts. Their diameters vary slightly around a target value. Quality engineers use the normal distribution to estimate how many products fall within acceptable specification limits.</p>
+        <div class="grid">
+          <article class="section-card"><h4>Illustrative input parameters</h4><ul><li>Target / mean diameter: μ = 10 mm</li><li>Standard deviation: σ = 0.05 mm</li><li>Lower specification limit: 9.90 mm</li><li>Upper specification limit: 10.10 mm</li></ul></article>
+          <article class="section-card"><h4>Mathematical model</h4><div class="formula">X ~ N(μ, σ²)</div><p style="margin-top:10px">The normal curve is symmetric around the mean μ.</p></article>
+          <article class="section-card"><h4>Interactive calculation</h4><div class="placeholder">Input controls and probability calculations will be implemented in Stage 2.</div></article>
+          <article class="section-card"><h4>Dynamic visualization</h4><div class="placeholder">The bell-shaped curve and shaded acceptable / defective regions will appear here in Stage 2.</div></article>
+        </div>
+        <article class="section-card" style="margin-top:16px"><h4>Interpretation of results</h4><p>The completed module will explain the acceptable production percentage and the expected percentage of defective shafts in simple language.</p></article>
+      </div>
+    </section>
+
+    <section id="exponential" class="panel" role="tabpanel">
+      <div class="hero-card">
+        <div class="module-kicker">Module 02 · Cloud computing</div>
+        <h3>Exponential Distribution — Cloud Request Inter-arrival Time</h3>
+        <p><strong>Industry problem:</strong> A cloud service receives requests over time. The exponential distribution can model the waiting time between requests when arrivals follow a constant-rate Poisson process.</p>
+        <div class="grid">
+          <article class="section-card"><h4>Illustrative input parameters</h4><ul><li>Arrival rate: λ = 12 requests per minute</li><li>Time threshold: t (seconds)</li></ul></article>
+          <article class="section-card"><h4>Mathematical model</h4><div class="formula">f(t) = λe<sup>−λt</sup>, t ≥ 0</div><p style="margin-top:10px">The rate and time units must be consistent.</p></article>
+          <article class="section-card"><h4>Interactive calculation</h4><div class="placeholder">Arrival-rate and time inputs, probabilities, mean, and variance will be implemented in Stage 3.</div></article>
+          <article class="section-card"><h4>Dynamic visualization</h4><div class="placeholder">The exponential density curve and selected probability region will appear here in Stage 3.</div></article>
+        </div>
+        <article class="section-card" style="margin-top:16px"><h4>Interpretation of results</h4><p>The completed module will explain waiting-time probabilities and the memoryless property. Inter-arrival time is the time between requests, not server response time.</p></article>
+      </div>
+    </section>
+
+    <section id="clt" class="panel" role="tabpanel">
+      <div class="hero-card">
+        <div class="module-kicker">Module 03 · Warehouse operations</div>
+        <h3>Central Limit Theorem — Warehouse Processing Time</h3>
+        <p><strong>Industry problem:</strong> A warehouse processes many orders. Individual processing times may vary, but the Central Limit Theorem helps explain how the average processing time behaves across repeated samples.</p>
+        <div class="grid">
+          <article class="section-card"><h4>Model parameters</h4><p>The sample size, population mean, and population standard deviation will be configurable when this module is implemented.</p></article>
+          <article class="section-card"><h4>Mathematical model</h4><div class="formula">Z = (X̄ − μ) / (σ / √n)</div><p style="margin-top:10px">For sufficiently large samples, the sample mean is approximately normal under the usual CLT conditions.</p></article>
+          <article class="section-card"><h4>Interactive calculation</h4><div class="placeholder">Sample inputs and calculations will be implemented in a later stage.</div></article>
+          <article class="section-card"><h4>Dynamic visualization</h4><div class="placeholder">A sampling-distribution visualization will be added in a later stage.</div></article>
+        </div>
+        <article class="section-card" style="margin-top:16px"><h4>Interpretation of results</h4><p>The completed module will explain what the sample mean tells a warehouse manager about typical order-processing time.</p></article>
+      </div>
+    </section>
+  </main>
+  <footer>Continuous Probability Distributions · Undergraduate AIML learning application</footer>
+
+  <script>
+    const tabs = [...document.querySelectorAll('.tab')];
+    const panels = [...document.querySelectorAll('.panel')];
+
+    function showPanel(id) {
+      panels.forEach(panel => panel.classList.toggle('active', panel.id === id));
+      tabs.forEach(tab => {
+        const selected = tab.dataset.target === id;
+        tab.setAttribute('aria-selected', String(selected));
+      });
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    tabs.forEach(tab => tab.addEventListener('click', () => showPanel(tab.dataset.target)));
+    document.querySelectorAll('[data-open]').forEach(tile =>
+      tile.addEventListener('click', () => showPanel(tile.dataset.open))
+    );
+  </script>
+</body>
+</html>
